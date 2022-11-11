@@ -5,10 +5,26 @@ import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String operation = sc.nextLine();
-        String txt = sc.nextLine();
-        int key = sc.nextInt();
+        String operation = "enc";
+        String txt = null;
+        int key = 0;
+
+        for (int i=0; i< args.length;i++){
+            String arg = args[i];
+            String argValue = args[++i];
+
+            switch (arg){
+                case ("-mode"):
+                    operation = argValue;
+                    break;
+                case ("-key"):
+                    key = Integer.parseInt(argValue);
+                    break;
+                case ("-data"):
+                    txt = argValue;
+                    break;
+            }
+        }
 
         String res = "";
 

@@ -81,6 +81,35 @@ files:
         }
     }
   learner_created: false
+- name: src/encryptdecrypt/ShiftAlg.java
+  visible: true
+  text: |
+    package encryptdecrypt;
+
+    public class ShiftAlg {
+
+        public static String encrypt(String txt, int key){
+            String encrypted = "";
+            for (char ch : txt.toCharArray()) {
+                encrypted += (char) (ch + key);
+            }
+
+            return encrypted;
+        }
+
+        public static String decrypt(String txt, int key){
+            String encrypted = "";
+            for (char ch : txt.toCharArray()) {
+                encrypted += (char) (ch - key);
+            }
+
+            return encrypted;
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5390#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Fri, 11 Nov 2022 10:18:11 UTC
 record: -1
