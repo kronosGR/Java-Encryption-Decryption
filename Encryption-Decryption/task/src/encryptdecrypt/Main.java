@@ -1,19 +1,24 @@
 package encryptdecrypt;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
-import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
         String operation = "enc";
         String txt = null;
         int key = 0;
+        String in = null;
+        String out = null;
 
-        for (int i=0; i< args.length;i++){
+        for (int i = 0; i < args.length; i++) {
             String arg = args[i];
             String argValue = args[++i];
 
-            switch (arg){
+            switch (arg) {
                 case ("-mode"):
                     operation = argValue;
                     break;
@@ -23,12 +28,25 @@ public class Main {
                 case ("-data"):
                     txt = argValue;
                     break;
+                case "-in":
+                    in = argValue;
+                    break;
+                case "-out":
+                    out = argValue;
+                    break;
+
             }
         }
 
         String res = "";
+        if (txt == null && in == null) {
+            txt = "";
+        } else if (txt == null) {
+            // read from file
+            txt = readFile(in);
+        }
 
-        switch (operation){
+        switch (operation) {
             case "enc":
                 res = ShiftAlg.encrypt(txt, key);
                 break;
@@ -37,7 +55,33 @@ public class Main {
                 break;
         }
 
-        System.out.println(res);
+        if (out == null) {
+            System.out.println(res);
+        } else {
+            // write result to file
+            writeFile(out, res);
+        }
+    }
+
+    public static String readFile(String file) {
+        try (Scanner sc = new Scanner(new File(file))) {
+            String text = "";
+            while (sc.hasNextLine()) {
+                text += sc.nextLine();
+            }
+            return text;
+        } catch (FileNotFoundException e) {
+            return "";
+        }
+    }
+
+    public static void writeFile(String file, String txt) {
+        try (FileWriter wr = new FileWriter(file)) {
+            wr.write(txt);
+            wr.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 //    public static char Encrypt(char letter, int key) {
