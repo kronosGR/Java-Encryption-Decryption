@@ -81,7 +81,7 @@ files:
         }
     }
   learner_created: false
-- name: src/encryptdecrypt/ShiftAlg.java
+- name: src/encryptdecrypt/UnicodeAlg.java
   visible: true
   text: |
     package encryptdecrypt;

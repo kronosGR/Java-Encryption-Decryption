@@ -178,6 +178,49 @@ files:
 
     }
   learner_created: false
+- name: output.txt
+  visible: true
+  text: 111122223333
+  learner_created: true
+- name: src/encryptdecrypt/UnicodeAlg.java
+  visible: true
+  text: |
+    package encryptdecrypt;
+
+    public class ShiftAlg {
+
+        public static String encrypt(String txt, int key){
+            String encrypted = "";
+            for (char ch : txt.toCharArray()) {
+                encrypted += (char) (ch + key);
+            }
+
+            return encrypted;
+        }
+
+        public static String decrypt(String txt, int key){
+            String encrypted = "";
+            for (char ch : txt.toCharArray()) {
+                encrypted += (char) (ch - key);
+            }
+
+            return encrypted;
+        }
+    }
+  learner_created: true
+- name: src/encryptdecrypt/Algorithm.java
+  visible: true
+  learner_created: true
+- name: src/encryptdecrypt/ShiftAlg.java
+  visible: true
+  learner_created: true
+- name: src/encryptdecrypt/Factory.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/5392#comment
-status: Unchecked
+status: Solved
+feedback:
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">JetBrains
+    Academy</a> to continue learning.
+  time: Mon, 14 Nov 2022 18:42:54 UTC
 record: -1

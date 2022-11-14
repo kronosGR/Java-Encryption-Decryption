@@ -8,11 +8,13 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Factory factory = new Factory();
         String operation = "enc";
         String txt = null;
         int key = 0;
         String in = null;
         String out = null;
+        String algo = "shift";
 
         for (int i = 0; i < args.length; i++) {
             String arg = args[i];
@@ -34,9 +36,14 @@ public class Main {
                 case "-out":
                     out = argValue;
                     break;
+                case "-alg":
+                    algo = argValue;
+                    break;
 
             }
         }
+
+        Algorithm algorithm = factory.useAlgo(algo);
 
         String res = "";
         if (txt == null && in == null) {
@@ -48,10 +55,10 @@ public class Main {
 
         switch (operation) {
             case "enc":
-                res = ShiftAlg.encrypt(txt, key);
+                res = algorithm.encrypt(txt, key);
                 break;
             case "dec":
-                res = ShiftAlg.decrypt(txt, key);
+                res = algorithm.decrypt(txt, key);
                 break;
         }
 
@@ -97,3 +104,5 @@ public class Main {
 //        return ret;
 //    }
 }
+
+

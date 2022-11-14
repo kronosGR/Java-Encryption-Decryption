@@ -116,7 +116,7 @@ files:
         }
     }
   learner_created: false
-- name: src/encryptdecrypt/ShiftAlg.java
+- name: src/encryptdecrypt/UnicodeAlg.java
   visible: true
   text: |
     package encryptdecrypt;
@@ -150,4 +150,4 @@ status: Solved
 feedback:
   message: Congratulations!
   time: Sat, 12 Nov 2022 18:24:06 UTC
-record: -1
+record: 5
